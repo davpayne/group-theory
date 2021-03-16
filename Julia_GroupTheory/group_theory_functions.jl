@@ -76,7 +76,7 @@ function play_game(board, workers)
         println("Start of round ", rounds)
         print_board(board, workers)
         for i=1:num_workers
-            println("Num tasks remaining", num_tasks_remaining)
+            println("Num tasks remaining ", num_tasks_remaining)
             if num_tasks_remaining > 0
                 valid_moves = calculate_valid_moves(board, workers[i])
                 if length(valid_moves)==0
