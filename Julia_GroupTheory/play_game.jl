@@ -1,9 +1,9 @@
 include("object_definitions.jl")
 include("group_theory_functions.jl")
 
-num_workers = 2
-board_rows = 3
-board_columns = 3
+num_workers = 3
+board_rows = 5
+board_columns = 5
 
 board = create_board(board_rows, board_columns)
 

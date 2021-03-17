@@ -80,8 +80,11 @@ function play_game(board, workers)
             if num_tasks_remaining > 0
                 valid_moves = calculate_valid_moves(board, workers[i])
                 if length(valid_moves)==0
-                    selected_move = [rand((1:size(board)[1])),
-                    rand((1:size(board)[2]))]
+                    valid_random_moves = findall(x->(x.occupancy==0
+                    && x.complete_flag==0), board)
+                    choice = rand((1:length(valid_random_moves)))
+                    chosen_move = valid_random_moves[choice]
+                    selected_move = [chosen_move[1],chosen_move[2]]
                 else
                     choice = rand((1:length(valid_moves)))
                     selected_move = valid_moves[choice] +
