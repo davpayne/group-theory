@@ -5,7 +5,7 @@ function create_board(rows, columns, use_default=1)
         default_difficulty = 1
         default_occupancy = 0
         default_complete_flag = 0
-        for i=1:length(board)
+        for i in 1:length(board)
             id = i
             iteration_task = task(
             id, default_complete_flag,
@@ -17,11 +17,11 @@ function create_board(rows, columns, use_default=1)
 end
 
 function print_board(board, workers)
-    for row=1:size(board)[1]
+    for row in 1:size(board)[1]
         line = ""
-        for col=1:size(board)[2]
+        for col in 1:size(board)[2]
             worker_loc = 0
-            for i=1:length(workers)
+            for i in 1:length(workers)
                 if [row, col] == workers[i].current_location
                     worker_loc = workers[i].id
                 end
@@ -52,7 +52,7 @@ function calculate_valid_moves(board, worker)
     ]
     valid_moves = []
     if worker.current_location != [-1,-1]
-        for i=1:length(possible_moves)
+        for i in 1:length(possible_moves)
             move = worker.current_location + possible_moves[i]
             if move[1] > 0 && move[1] <= size(board)[1] &&
                 move[2] > 0 && move[2] <= size(board)[2]

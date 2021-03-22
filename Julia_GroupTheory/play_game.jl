@@ -11,7 +11,7 @@ board = create_board(board_rows, board_columns)
 workers = Array{worker}(undef, num_workers)
 default_ability = 1
 default_start = [-1,-1]
-for i=1:num_workers
+for i in 1:num_workers
     id = i
     workers[i] = worker(id,
     default_ability,

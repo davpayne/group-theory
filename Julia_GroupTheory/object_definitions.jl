@@ -3,6 +3,7 @@ mutable struct worker
     id::Int
     ability::Int
     current_location
+    # Want abilities that can be turned on/off
 end
 
 mutable struct task
