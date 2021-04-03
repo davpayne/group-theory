@@ -76,9 +76,12 @@ function play_game(board, workers)
         println("Start of round ", rounds)
         print_board(board, workers)
         for i=1:num_workers
+            # Determine if worker is done working on current task
+            current_worker = workers[i];
+            # if current_worker
             println("Num tasks remaining ", num_tasks_remaining)
             if num_tasks_remaining > 0
-                valid_moves = calculate_valid_moves(board, workers[i])
+                valid_moves = calculate_valid_moves(board, current_worker)
                 if length(valid_moves)==0
                     valid_random_moves = findall(x->(x.occupancy==0
                     && x.complete_flag==0), board)
@@ -88,12 +91,12 @@ function play_game(board, workers)
                 else
                     choice = rand((1:length(valid_moves)))
                     selected_move = valid_moves[choice] +
-                    workers[i].current_location
+                    current_worker.current_location
                 end
-                workers[i].current_location = selected_move
+                current_worker.current_location = selected_move
                 board[selected_move[1],selected_move[2]].complete_flag = 1
                 num_tasks_remaining -= 1
-                println("Move", workers[i].current_location)
+                println("Move", current_worker.current_location)
             else
                 println("No tasks remaining")
                 break
